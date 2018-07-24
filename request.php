@@ -89,7 +89,7 @@
 							<input type="int" name="SID" class="form-control" placeholder="Student ID : 58070501000" pattern="[0-9]{11}" required>
 						</div>
 						<div class="form-group">
-							<input type="tel" name="telNo" class="form-control" placeholder="0XX-XXXXXXX" pattern="[0][0-9]{2}-[0-9]{7}" required>
+							<input type="tel" name="telNo" class="form-control" placeholder="0XXXXXXXXX" pattern="[0][0-9]{9}" required>
 						</div>
 
 						<p align="center">

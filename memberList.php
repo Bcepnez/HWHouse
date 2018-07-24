@@ -68,9 +68,11 @@
         function displayResponse(response) {    
             var array = JSON.parse(response); 
             var i;     
-            var out = "<table><thead><tr><td style=\"width: 10%;\">Student ID</td><td style=\"width: 35%;\">Name-Lastname</td><td style=\"width: 10%;\">E-mail</td><td style=\"width: 20%;\">Tel No.</td><td style=\"width: 10%;\">Facebook</td><td style=\"width: 10%;\">Line ID</td><td>Edit</td><td style=\"width: 10%;\">Delete</td></tr></thead><tbody id=\"myTable\">";     
+            var out = "<table><thead><tr><td style=\"width: 5%;\">Admin?</td><td style=\"width: 10%;\">Student ID</td><td style=\"width: 30%;\">Name-Lastname</td><td style=\"width: 10%;\">E-mail</td><td style=\"width: 20%;\">Tel No.</td><td style=\"width: 10%;\">Facebook</td><td style=\"width: 10%;\">Line ID</td><td>Edit</td><td style=\"width: 10%;\">Delete</td></tr></thead><tbody id=\"myTable\">";     
             for(i = 0; i < array.length; i++) {         
-                out += "<tr><td style=\"text-align:center\">"+array[i].id+"</td><td>"+array[i].fname+" "+array[i].lname+"</td><td>"+array[i].email+"</td><td>"+array[i].tel+"</td><td>"+array[i].fb+"</td><td>"+array[i].line+"</td>"
+                out += "<tr><td style=\"text-align:center\">";
+                (array[i].IsAdmin==1)?out+="Yes":out+="No";
+                out+="</td><td style=\"text-align:center\">"+array[i].id+"</td><td>"+array[i].fname+" "+array[i].lname+"</td><td>"+array[i].email+"</td><td>"+array[i].tel+"</td><td>"+array[i].fb+"</td><td>"+array[i].line+"</td>"
                 +"<td><button class=\"btn btn-warning\" onclick=\"document.location.href='/edit.php?ID="+array[i].id+"'\">Edit</button></td><td><button class=\"btn btn-danger\" onclick=\"deletetool("+array[i].id+")\">Delete</button></td>"
                 +"</tr>";
             } 

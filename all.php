@@ -72,7 +72,7 @@
             // var array = JSON.parse(response);
             var array = JSON.parse(response); 
             var i;     
-            var out = "<table><thead><tr><td style=\"width: 10%;\">Object ID</td><td style=\"width: 50%;\">Name</td><td style=\"width: 10%;\">Unit</td><td style=\"width: 20%;\">Type</td><td style=\"width: 10%;\">Reserve</td></tr></thead><tbody id=\"myTable\">";     
+            var out = "<table><thead><tr><td style=\"width: 10%;\">Object ID</td><td style=\"width: 50%;\">Name</td><td style=\"width: 10%;text-align:center;\">Unit</td><td style=\"width: 20%;\">Type</td><td style=\"width: 10%;\">Reserve</td></tr></thead><tbody id=\"myTable\">";     
             for(i = 0; i < array.length; i++) {         
                 out += "<tr><td style=\"text-align:center\">"+(i+1)+"</td><td>"+array[i].name+"</td><td>"+array[i].unit+"</td><td>"+array[i].type+"</td><td><button class=\"btn btn-warning\" onclick=\"document.location.href='/request.php?ID="+array[i].id+"'\">Request for Product</button></td>"+"</tr>";
             } 

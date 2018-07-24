@@ -71,7 +71,7 @@
             var i;     
             var out = "<table><thead><tr><td style=\"width: 10%;\">Object ID</td><td style=\"width: 35%;\">Name</td><td style=\"width: 10%;\">Unit</td><td style=\"width: 20%;\">Type</td><td style=\"width: 10%;\">Cabin</td><td style=\"width: 10%;\">Floor</td><td>Edit</td><td style=\"width: 10%;\">Delete</td></tr></thead><tbody id=\"myTable\">";     
             for(i = 0; i < array.length; i++) {         
-                out += "<tr><td style=\"text-align:center\">"+(i+1)+"</td><td>"+array[i].name+"</td><td>"+array[i].unit+"</td><td>"+array[i].type+"</td><td>"+array[i].place+"</td><td>"+array[i].level+"</td>"
+                out += "<tr><td style=\"text-align:center;\">"+(i+1)+"</td><td>"+array[i].name+"</td><td style=\"text-align:center;\">"+array[i].unit+"</td><td>"+array[i].type+"</td><td style=\"text-align:center;\">"+array[i].place+"</td><td style=\"text-align:center;\">"+array[i].level+"</td>"
                 +"<td><button class=\"btn btn-warning\" onclick=\"document.location.href='/edit.php?ID="+array[i].id+"'\">Edit</button></td><td><button class=\"btn btn-danger\" onclick=\"deletetool("+array[i].id+")\">Delete</button></td>"
                 +"</tr>";
             } 
