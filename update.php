@@ -85,7 +85,7 @@
             $passwordsql = "mysql";
             $db_name = "HWHouse";
             
-            $upd = "UPDATE `HWHouse`.`Facilities` SET `Timestamp` = CURRENT_TIMESTAMP, `Name` = '$name', `Unit` = '$unit', `place` = '$place', `storage` = '$storage', `level` = '$storage', `Type` = '$type' WHERE `Facilities`.`ID` = $id";
+            $upd = "UPDATE `HWHouse`.`Facilities` SET `Timestamp` = CURRENT_TIMESTAMP, `Name` = '$name', `Unit` = '$unit', `place` = '$place', `storage` = '$storage', `level` = '$level', `Type` = '$type' WHERE `Facilities`.`ID` = $id";
                 
                 // Create connection
             $conn = new mysqli($servername, $usernamesql, $passwordsql, $db_name);

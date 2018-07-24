@@ -38,7 +38,7 @@
   	</style>
  </head>
   
- <body background = "./32b53cf9ffa48bc204de5379af00a0ca.jpg">
+ <body background = "background.jpg">
    <div class="container">
    		<div class="row">
 			<div class="col-md-3">

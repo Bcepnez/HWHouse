@@ -33,7 +33,7 @@
             background-color: #ffffff; 
         }     
     </style>  
-<body background="Noey.jpg"> 
+<body background="background.jpg"> 
     <h1>Hardware House Tool Borrow List(Administration Only)</h1> 
 
     <div class="col-md-1" >

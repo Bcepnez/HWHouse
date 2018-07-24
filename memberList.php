@@ -34,7 +34,7 @@
         }     
     </style>  
 <body background="background.jpg"> 
-    <h1>Hardware House Tool List(Administration Only)</h1> 
+    <h1>Hardware House Member List(Administration Only)</h1> 
 
     <div class="col-md-1" >
         <button class="btn btn-warning" onclick="document.location.href='/AdminPage.html'" style="width: 120px;">Admin Console</button>
@@ -54,7 +54,7 @@
         load(); 
         function load(){ 
             var xmlhttp = new XMLHttpRequest(); 
-            var url = "./geter.php"; 
+            var url = "./getMember.php"; 
  
             xmlhttp.onreadystatechange=function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -65,13 +65,12 @@
             xmlhttp.send(); 
         } 
         
-        function displayResponse(response) {     
-            // var array = JSON.parse(response);
+        function displayResponse(response) {    
             var array = JSON.parse(response); 
             var i;     
-            var out = "<table><thead><tr><td style=\"width: 10%;\">Object ID</td><td style=\"width: 35%;\">Name</td><td style=\"width: 10%;\">Unit</td><td style=\"width: 20%;\">Type</td><td style=\"width: 10%;\">Cabin</td><td style=\"width: 10%;\">Floor</td><td>Edit</td><td style=\"width: 10%;\">Delete</td></tr></thead><tbody id=\"myTable\">";     
+            var out = "<table><thead><tr><td style=\"width: 10%;\">Student ID</td><td style=\"width: 35%;\">Name-Lastname</td><td style=\"width: 10%;\">E-mail</td><td style=\"width: 20%;\">Tel No.</td><td style=\"width: 10%;\">Facebook</td><td style=\"width: 10%;\">Line ID</td><td>Edit</td><td style=\"width: 10%;\">Delete</td></tr></thead><tbody id=\"myTable\">";     
             for(i = 0; i < array.length; i++) {         
-                out += "<tr><td style=\"text-align:center\">"+(i+1)+"</td><td>"+array[i].name+"</td><td>"+array[i].unit+"</td><td>"+array[i].type+"</td><td>"+array[i].place+"</td><td>"+array[i].level+"</td>"
+                out += "<tr><td style=\"text-align:center\">"+array[i].id+"</td><td>"+array[i].fname+" "+array[i].lname+"</td><td>"+array[i].email+"</td><td>"+array[i].tel+"</td><td>"+array[i].fb+"</td><td>"+array[i].line+"</td>"
                 +"<td><button class=\"btn btn-warning\" onclick=\"document.location.href='/edit.php?ID="+array[i].id+"'\">Edit</button></td><td><button class=\"btn btn-danger\" onclick=\"deletetool("+array[i].id+")\">Delete</button></td>"
                 +"</tr>";
             } 
@@ -82,7 +81,7 @@
             
             if (confirm("คุณต้องการลบข้อมูลนี้จริงๆหรอ ( OoO )!")) {
                 var xmlhttp = new XMLHttpRequest(); 
-                var url = "./delete.php?ID="+tID; 
+                var url = "./delMem.php?ID="+tID; 
  
                 xmlhttp.onreadystatechange = function() { 
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 

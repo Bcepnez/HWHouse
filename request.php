@@ -83,7 +83,7 @@
 						<div class="bg">Valid Unit : <?echo $unit;?></div>
 						<br>	
 						<div class="form-group">
-							<input type="int" name="requnit" class="form-control" placeholder="Request Unit" value = "1" required>
+							<input type="number" name="requnit" class="form-control" placeholder="Request Unit" value = "1" min="1" max="<?echo $unit;?>" required>
 						</div>
 						<div class="form-group">
 							<input type="int" name="SID" class="form-control" placeholder="Student ID : 58070501000" pattern="[0-9]{11}" required>

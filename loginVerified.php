@@ -92,7 +92,7 @@
                 if ($id == $sid && $telno == $tel) {
                   echo "Login successfully<br>";
                   if ($IsAdmin == 1) {
-                    header( "refresh:1;url=./AdminPage.html" );
+                    header( "refresh:0;url=./AdminPage.html" );
                   }
                   else{
                     header( "refresh:1;url=./all.php" );

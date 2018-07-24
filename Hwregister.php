@@ -18,10 +18,6 @@
   	 <script scr="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> 
   	<!--[endif] --> 
   	<style>
-  		.benz {
-  			margin:top : 2%; 
-  			margin-bottom : 5%;
-  		}
   		.textbox {
   			display: block;
     		width: 100%;
@@ -38,7 +34,7 @@
   	</style>
  </head>
   
- <body background = "./32b53cf9ffa48bc204de5379af00a0ca.jpg">
+ <body background = "background.jpg">
    <div class="container">
    		<div class="row">
 			<div class="col-md-3">
@@ -49,12 +45,7 @@
 			</div>
    			<div class="col-md-6">
 				<h1><font face="verdana" color="blue"> Hardware house</font></h1>
-				<form action="set.php" method="post" accept-charset="utf-8">
-					<!-- <input type="hidden" name="tokenname" value="9afe835bde8943e1486f1f044e4aded8">     -->
-						<!-- <div class="form-group">
-							<input type="int" name="id" class="form-control" placeholder="ID No.">
-						</div>    -->               
-					
+				<form action="set.php" method="post" accept-charset="utf-8">					
 					<div class="form-group">
 						<input type="text" name="name" id="name" class="form-control" placeholder="Name" value="" required>
 					</div>

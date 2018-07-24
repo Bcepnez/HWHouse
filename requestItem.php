@@ -65,13 +65,13 @@
             $reqitem = $_POST['requnit'];
             $id = $_POST['SID'];
             $telno = $_POST['telNo'];
-            // header( "refresh:5;url=./memberRegister.php" );
             $servername = "localhost";
             $usernamesql = "root";
             $passwordsql = "mysql";
             $db_name = "HWHouse";
         
             $insert = "INSERT INTO `Borrow` (`Timestamp`, `SID`, `ItemID`, `ReqUnit`) VALUES (CURRENT_TIMESTAMP, '$id', '$itemid', '$reqitem')";
+            $sel = "SELECT * FROM Facilities WHERE `ID` = '".$itemid."';";
             $verified = "SELECT * FROM Member WHERE `SID` = '".$id."';";
             // Create connection
             $conn = new mysqli($servername, $usernamesql, $passwordsql, $db_name);
@@ -94,7 +94,11 @@
 
                 if ($id == $sid && $telno == $tel) {
                   if (mysqli_query($conn, $insert)) {
-                    echo "<font color=\"white\">Add Data successfully<br></font>";
+                    $results = mysqli_query($conn, $sel);
+                    $re_sult = mysqli_fetch_array( $results , MYSQLI_ASSOC);
+                    $items = $re_sult["Unit"];
+                    $update = "UPDATE `HWHouse`.`Facilities` SET `Timestamp` = CURRENT_TIMESTAMP, `Unit` = '".($items-$reqitem)."' WHERE `Facilities`.`ID` = '$itemid';";
+                    mysqli_query($conn, $update);
                     header( "refresh:0;url=./all.php" );
                   } 
                   else {
@@ -102,14 +106,42 @@
                   }
                 }
                 else{
-                  echo "Parse ID : ".$id."<br>";
-                  echo "Parse telNo : ".$telno."<br>";
                   echo "Failed to Login<br>";
-                  header( "refresh:1;url=./all.php" );
+                  header( "refresh:0;url=./all.php" );
                 }
               }
             } 
+            $sel2 = "SELECT * FROM Facilities WHERE ID = ".$itemid;
+            if ($resulted = mysqli_query($conn, $sel2)) {
+              $res = mysqli_fetch_array( $resulted , MYSQLI_ASSOC);
+              $item = $res["Name"];
+            }
             mysqli_close($conn);
+        ?>
+        <?
+          define('LINE_API',"https://notify-api.line.me/api/notify");
+          $token = "UkgfmebAqiNNbr1aG3XV4GTe9Ly10WoquuzrXcSIPYy"; //ใส่Token ที่copy เอาไว้
+          $str = "Hello\nI'm ".$id."\nMay I borrow : ".$item."\nFor : ".$reqitem." unit(s),please?"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+         
+          $res = notify_message($str,$token);
+          print_r($res);
+          function notify_message($message,$token){
+           $queryData = array('message' => $message);
+           $queryData = http_build_query($queryData,'','&');
+           $headerOptions = array( 
+                   'http'=>array(
+                      'method'=>'POST',
+                      'header'=> "Content-Type: application/x-www-form-urlencoded\r\n"
+                                ."Authorization: Bearer ".$token."\r\n"
+                                ."Content-Length: ".strlen($queryData)."\r\n",
+                      'content' => $queryData
+                   ),
+           );
+           $context = stream_context_create($headerOptions);
+           $resulted = file_get_contents(LINE_API,FALSE,$context);
+           $res = json_decode($resulted);
+           return $res;
+          }
         ?>
   </body>
   <footer>
